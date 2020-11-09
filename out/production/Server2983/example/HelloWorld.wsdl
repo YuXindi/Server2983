@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http:/Server2983/example" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http:/Server2983/example" xmlns:intf="http:/Server2983/example" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+
+   <wsdl:message name="minusOptResponse">
+      <wsdl:part name="minusOptReturn" type="xsd:double"/>
+   </wsdl:message>
+   <wsdl:message name="minusOptRequest">
+      <wsdl:part name="a" type="xsd:double"/>
+      <wsdl:part name="b" type="xsd:double"/>
+   </wsdl:message>
+   <wsdl:message name="addOptRequest">
+      <wsdl:part name="a" type="xsd:double"/>
+      <wsdl:part name="b" type="xsd:double"/>
+   </wsdl:message>
+   <wsdl:message name="addOptResponse">
+      <wsdl:part name="addOptReturn" type="xsd:double"/>
+   </wsdl:message>
+   <wsdl:portType name="HelloWorld">
+      <wsdl:operation name="minusOpt" parameterOrder="a b">
+         <wsdl:input message="impl:minusOptRequest" name="minusOptRequest"/>
+         <wsdl:output message="impl:minusOptResponse" name="minusOptResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="addOpt" parameterOrder="a b">
+         <wsdl:input message="impl:addOptRequest" name="addOptRequest"/>
+         <wsdl:output message="impl:addOptResponse" name="addOptResponse"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="HelloWorldSoapBinding" type="impl:HelloWorld">
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsdl:operation name="minusOpt">
+         <wsdlsoap:operation soapAction=""/>
+         <wsdl:input name="minusOptRequest">
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://example" use="encoded"/>
+         </wsdl:input>
+         <wsdl:output name="minusOptResponse">
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://example" use="encoded"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="addOpt">
+         <wsdlsoap:operation soapAction=""/>
+         <wsdl:input name="addOptRequest">
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://example" use="encoded"/>
+         </wsdl:input>
+         <wsdl:output name="addOptResponse">
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://example" use="encoded"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="HelloWorldService">
+      <wsdl:port binding="impl:HelloWorldSoapBinding" name="HelloWorld">
+         <wsdlsoap:address location="http://localhost:8080/Server2983/services/HelloWorld"/>
+      </wsdl:port>
+   </wsdl:service>
+
+</wsdl:definitions>
